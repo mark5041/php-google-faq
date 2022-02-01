@@ -76,6 +76,43 @@
         ]
     ];
 
+    $link = [
+        [
+            'decisione della Corte di giustizia dell Unione europea',
+            'modulo web'
+        ],
+        [
+            'Centro Google per la sicurezza online',
+            'Scopri'
+        ],
+        [
+            'Contattaci'
+        ],
+        [
+            'contattare il webmaster',
+            'fai clic qui',
+            'visitare la nostra pagina di assistenza per avere ulteriori informazioni'
+        ],
+        [
+            ' URL referrer',
+            'qui'
+        ],
+    ];
+
+    function checkLink($string, $array)
+    {
+        $newArray = $string;
+        if($array != null)
+        {
+            foreach($array as $word)
+            {
+                $replace = '<a href="">'.$word.'</a>';
+                $newArray = str_replace($word, $replace, $newArray);
+            }
+        };
+        return $newArray;
+    }
+
 ?>
 
 
@@ -100,9 +137,11 @@
                         echo    '<div class="question">
                                     <h1>'.$FAQ['question'][$i].'</h1>
                                     <div class="answare">
-                                        <p>'.$FAQ['answare'][$i]['text'].'</p>
+                                        <p>'.checkLink($FAQ['answare'][$i]['text'], $link[$i]).'</p>
                                     </div>
                                 </div>';
+
+                        
                     break;
                     case 'paragraph':
                         echo    '<div class="question">';
@@ -111,7 +150,7 @@
                                           
                                         foreach($FAQ['answare'][$i]['text'] as $text)
                                         {
-                                            echo '<p>'.$text.'</p>';
+                                            echo '<p>'.checkLink($text, $link[$i]).'</p>';
                                         }
 
                         echo            '</div>';
@@ -131,16 +170,16 @@
                                                 {
                                                     if($text['secondary'] != false)
                                                     {
-                                                        echo '<li>'.$text['list-element'].'<ol type="a">';
+                                                        echo '<li>'.checkLink($text['list-element'], $link[$i]).'<ol type="a">';
                                                         foreach($text['secondary'] as $secondary_text)
                                                         {
-                                                            echo '<li>'.$secondary_text.'</li>';
+                                                            echo '<li>'.checkLink($secondary_text, $link[$i]).'</li>';
                                                         }
                                                         echo '</ol></li>';
                                                     }
                                                     else
                                                     {
-                                                        echo '<li>'.$text['list-element'].'</li>';
+                                                        echo '<li>'.checkLink($text['list-element'], $link[$i]).'</li>';
                                                     }
                                                 }
                                                 echo '</ol>';
@@ -152,12 +191,12 @@
                                                             if($text['title'] !=false)
                                                             {
                                                                 echo '<h3>'.$text['title'].'</h3>';
-                                                                echo '<p>'.$text['body'].'</p>';
+                                                                echo '<p>'.checkLink($text['body'], $link[$i]).'</p>';
                                                             }
                                                             else
                                                             {
 
-                                                                echo '<p>'.$text['body'].'</p>';
+                                                                echo '<p>'.checkLink($text['body'], $link[$i]).'</p>';
                                                             }
                                                         }
                                                     }

@@ -30,6 +30,10 @@ p {
     margin-bottom: 1em;
 }
 
+a {
+    color: red;
+}
+
 ol {
     margin-left: 1em;
     margin-bottom: 1em;
