@@ -115,15 +115,56 @@
                                         }
 
                         echo            '</div>';
-                        echo        '</div>';;
+                        echo        '</div>';
                     break;
-                    case 'normal':
-                        echo    '<div class="question">
-                                    <h1>'.$FAQ['question'][$i].'</h1>
-                                    <div class="answare">
-                                        <p>'.$FAQ['answare'][$i]['text'].'</p>
-                                    </div>
-                                </div>';
+                    case 'list-of-list':
+                        echo    '<div class="question">';
+                        echo        '<h1>'.$FAQ['question'][$i].'</h1>';
+                        echo            '<div class="answare">';
+                                          
+                                        foreach($FAQ['answare'][$i]['text'] as $key => $item)
+                                        {
+                                            if($key == 'primary')
+                                            {
+                                                echo '<ol type="1">';
+                                                foreach($item as $text)
+                                                {
+                                                    if($text['secondary'] != false)
+                                                    {
+                                                        echo '<li>'.$text['list-element'].'<ol type="a">';
+                                                        foreach($text['secondary'] as $secondary_text)
+                                                        {
+                                                            echo '<li>'.$secondary_text.'</li>';
+                                                        }
+                                                        echo '</ol></li>';
+                                                    }
+                                                    else
+                                                    {
+                                                        echo '<li>'.$text['list-element'].'</li>';
+                                                    }
+                                                }
+                                                echo '</ol>';
+                                            }
+                                            elseif  ($key == 'outside') 
+                                                    {
+                                                        foreach($item as $text)
+                                                        {
+                                                            if($text['title'] !=false)
+                                                            {
+                                                                echo '<h2>'.$text['title'].'</h2>';
+                                                                echo '<p>'.$text['body'].'</p>';
+                                                            }
+                                                            else
+                                                            {
+
+                                                                echo '<p>'.$text['body'].'</p>';
+                                                            }
+                                                        }
+                                                    }
+                                        }
+
+                        echo            '</div>';
+                        echo        '</div>';
                     break;
 
                 }
