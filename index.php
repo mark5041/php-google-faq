@@ -94,14 +94,38 @@
         <?php
             for($i = 0; $i < 5; $i++)
             {
-                if($FAQ['answare'][$i]['type'] == 'normal')
+                switch($FAQ['answare'][$i]['type'])
                 {
-                    echo    '<div class="question">
-                                <h1>'.$FAQ['question'][$i].'</h1>
-                                <div class="answare">
-                                    <p>'.$FAQ['answare'][$i]['text'].'</p>
-                                </div>
-                            </div>';
+                    case 'normal':
+                        echo    '<div class="question">
+                                    <h1>'.$FAQ['question'][$i].'</h1>
+                                    <div class="answare">
+                                        <p>'.$FAQ['answare'][$i]['text'].'</p>
+                                    </div>
+                                </div>';
+                    break;
+                    case 'paragraph':
+                        echo    '<div class="question">';
+                        echo        '<h1>'.$FAQ['question'][$i].'</h1>';
+                        echo            '<div class="answare">';
+                                          
+                                        foreach($FAQ['answare'][$i]['text'] as $text)
+                                        {
+                                            echo '<p>'.$text.'</p>';
+                                        }
+
+                        echo            '</div>';
+                        echo        '</div>';;
+                    break;
+                    case 'normal':
+                        echo    '<div class="question">
+                                    <h1>'.$FAQ['question'][$i].'</h1>
+                                    <div class="answare">
+                                        <p>'.$FAQ['answare'][$i]['text'].'</p>
+                                    </div>
+                                </div>';
+                    break;
+
                 }
             }
         ?>
