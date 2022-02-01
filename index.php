@@ -8,7 +8,7 @@
             'Come faccio a rimuovere informazioni su di me dai risultati di ricerca di Google?',
             'Quando faccio clic sui risultati della Ricerca Google, le mie chiavi di ricerca vengono inviate ai siti web?',
         ],
-        'answare' => [
+        'answer' => [
             [
                 'type' => 'paragraph',
                 'text' => [
@@ -134,13 +134,13 @@
         <?php
             for($i = 0; $i < count($FAQ['question']); $i++)
             {
-                switch($FAQ['answare'][$i]['type'])
+                switch($FAQ['answer'][$i]['type'])
                 {
                     case 'normal':
                         echo    '<div class="question">
                                     <h1>'.$FAQ['question'][$i].'</h1>
-                                    <div class="answare">
-                                        <p>'.checkLink($FAQ['answare'][$i]['text'], $link[$i]).'</p>
+                                    <div class="answer">
+                                        <p>'.checkLink($FAQ['answer'][$i]['text'], $link[$i]).'</p>
                                     </div>
                                 </div>';
 
@@ -149,9 +149,9 @@
                     case 'paragraph':
                         echo    '<div class="question">';
                         echo        '<h1>'.$FAQ['question'][$i].'</h1>';
-                        echo            '<div class="answare">';
+                        echo            '<div class="answer">';
                                           
-                                        foreach($FAQ['answare'][$i]['text'] as $text)
+                                        foreach($FAQ['answer'][$i]['text'] as $text)
                                         {
                                             echo '<p>'.checkLink($text, $link[$i]).'</p>';
                                         }
@@ -162,9 +162,9 @@
                     case 'list-of-list':
                         echo    '<div class="question">';
                         echo        '<h1>'.$FAQ['question'][$i].'</h1>';
-                        echo            '<div class="answare">';
+                        echo            '<div class="answer">';
                                           
-                                        foreach($FAQ['answare'][$i]['text'] as $key => $item)
+                                        foreach($FAQ['answer'][$i]['text'] as $key => $item)
                                         {
                                             if($key == 'primary')
                                             {
