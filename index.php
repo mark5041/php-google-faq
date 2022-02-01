@@ -151,7 +151,7 @@
                                                         {
                                                             if($text['title'] !=false)
                                                             {
-                                                                echo '<h2>'.$text['title'].'</h2>';
+                                                                echo '<h3>'.$text['title'].'</h3>';
                                                                 echo '<p>'.$text['body'].'</p>';
                                                             }
                                                             else
