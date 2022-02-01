@@ -108,7 +108,9 @@
             {
                 $pos = strpos($newArray, $word);
                 $replace = '<a href="">'.$word.'</a>';
-                $newArray = substr_replace($newArray, $replace, $pos, strlen($word));
+                if ($pos !== false) {
+                    $newArray = substr_replace($newArray, $replace, $pos, strlen($word));
+                }
             }
         };
         return $newArray;

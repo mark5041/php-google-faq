@@ -31,7 +31,8 @@ p {
 }
 
 a {
-    color: red;
+    color: blue;
+    text-decoration: none;
 }
 
 ol {
