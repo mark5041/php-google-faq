@@ -132,7 +132,7 @@
 
     <div class="container">
         <?php
-            for($i = 0; $i < 5; $i++)
+            for($i = 0; $i < count($FAQ['question']); $i++)
             {
                 switch($FAQ['answare'][$i]['type'])
                 {
