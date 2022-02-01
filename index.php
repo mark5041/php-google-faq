@@ -94,7 +94,7 @@
             'visitare la nostra pagina di assistenza per avere ulteriori informazioni'
         ],
         [
-            ' URL referrer',
+            'URL referrer',
             'qui'
         ],
     ];
